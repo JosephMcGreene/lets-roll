@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Cinzel', serif;
+
+  background-image: url("wood-background.jpg");
+  background-color: saddlebrown;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  margin-bottom: 30px;
+
+  font-size: 2.5rem; /* 40px */
+  text-align: center;
+
+  text-shadow: 8px 4px 8px rgb(30,30,30);
+}
+
+hr {
+  border-color: black;
+  max-width: 30vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+.die {
+  margin-bottom: 30px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2fr;
+}
+  span {
+    font-size: 1.75em; /* 28px */
+    text-align: center;
+    padding-top: 12px;
+  }
+  input {
+    max-width: 20vw;
+    padding: 15px;
+    font-family: 'Cinzel', serif;
+    font-size: 1.75rem; /* 28px */
+    text-align: center;
+
+    border-radius: 9px;
+  }
+    input[type=number]::-webkit-inner-spin-button {
+      height: 50px;
+    }
+  button {
+    padding: 15px;
+    font-family: 'Cinzel', serif;
+    font-size: 1.75rem;/* 20px */
+
+    border-radius: 9px;
+  }
+  .rollResult {
+    font-size: 1.75em; /* 28px */
+  }
+
+  /* ----- STYLE CLASSES ----- */
+
+.text-shadow {
+  text-shadow: 8px 4px 5px black;
+}
+
+.box-shadow {
+  box-shadow: 8px 4px 5px black;
+}
+
+  /* ----- MEDIA QUERIES ----- */
+
+@media screen and (min-width: 920px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+}
