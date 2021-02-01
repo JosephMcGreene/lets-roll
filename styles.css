@@ -32,23 +32,37 @@ hr {
 
 .die {
   margin-bottom: 30px;
+  margin-left: 4vw;
+  margin-right: 4vw;
 
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
 }
   span {
-    font-size: 1.75em; /* 28px */
-    text-align: center;
-    padding-top: 12px;
+    font-size: 3rem; /* 36px */
+    margin: 12px;
+
+    grid-row-start: 1;
   }
+    span:nth-of-type(even) {
+      font-size: 3rem; /* 36px */
+
+      grid-row-start: 2;
+      grid-column-start: 1;
+      grid-column-end: 4;
+    }
   input {
     max-width: 20vw;
     padding: 15px;
     font-family: 'Cinzel', serif;
-    font-size: 1.75rem; /* 28px */
+    font-size: 2rem; /* 28px */
     text-align: center;
 
-    border-radius: 9px;
+    border-radius: 7px;
+
+    grid-row-start: 1;
   }
     input[type=number]::-webkit-inner-spin-button {
       height: 50px;
@@ -56,28 +70,57 @@ hr {
   button {
     padding: 15px;
     font-family: 'Cinzel', serif;
-    font-size: 1.75rem;/* 20px */
+    font-size: 1.75rem; /* 28px */
 
-    border-radius: 9px;
+    border-radius: 7px;
+    grid-row-start: 1;
   }
-  .rollResult {
-    font-size: 1.75em; /* 28px */
-  }
+    button:active {
+      box-shadow: 0 0 8px black inset;
+    }
 
   /* ----- STYLE CLASSES ----- */
 
 .text-shadow {
-  text-shadow: 8px 4px 5px black;
+  text-shadow: 4px 4px 6px black;
 }
 
 .box-shadow {
-  box-shadow: 8px 4px 5px black;
+  box-shadow: 4px 4px 6px rgb(40,40,40);
 }
 
   /* ----- MEDIA QUERIES ----- */
 
+@media screen and (min-width: 750px) {
+
+  .die {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1.75fr;
+    grid-auto-flow: column;
+    justify-items: center;
+    align-items: center;
+  }
+  span:nth-of-type(even) {
+    grid-row-start: 1;
+    grid-column-start: 4;
+    grid-column-end: 4;
+  }
+
+}
+
+
 @media screen and (min-width: 920px) {
+
   h1 {
     font-size: 3.5rem;
   }
+
+  .text-shadow {
+    text-shadow: 4px 4px 10px rgb(40,40,40);
+  }
+  
+  .box-shadow {
+    box-shadow: 8px 4px 6px rgb(40,40,40);
+  }
+
 }

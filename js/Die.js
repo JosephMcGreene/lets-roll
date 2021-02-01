@@ -1,15 +1,16 @@
 class Die {
-  constructor(numOfSides, id, numOfDice) {
+  constructor(numOfSides, id, numOfDice, resultsDisplay) {
     this.numOfSides = numOfSides;
     this.id = document.querySelector(id);
     this.numOfDice = document.querySelector(numOfDice);
+    this.resultsDisplay = document.querySelector(resultsDisplay);
     this.rollResults = [];
     this.rollTotal = 0;
   }
 
   /**
-   * Generates a random number or arrya of numbers representing the result of the die roll.
-   * @return  [Array]     an array containing the individual results of all of the die rolls performed.
+   * Generates a random number or array of numbers representing the result of the di(c)e roll.
+   * @return  [Array]     an array containing the individual results of all of the di(c)e rolls performed.
    */
   roll() {
     this.rollResults = [];
@@ -17,7 +18,6 @@ class Die {
       const dieRoll = Math.floor(Math.random() * Math.floor(this.numOfSides) + 1);
       this.rollResults.push(dieRoll);
     }
-    console.log(this.rollResults);
     return this.rollResults;
   }
 
@@ -31,18 +31,31 @@ class Die {
     for ( let i = 0; i < this.rollResults.length; i++ ) {
       this.rollTotal += this.rollResults[i];
     }
-    console.log(this.rollTotal);
     return this.rollTotal;
   }
 
     /**
-   * Listens for the user to press <button>roll</button>.
+   * Displays the roll results to the page.
+   * @return  nothing
+   */
+  displayResults() {
+    if (this.numOfDice.value == 1) {
+      this.resultsDisplay.innerHTML = `${this.addRolls()}`;
+    } else {
+      const joinedRolls = this.rollResults.join(' + ');
+      this.resultsDisplay.innerHTML = `${this.addRolls()} <small>(${joinedRolls})</small>`;
+    }
+  }
+
+    /**
+   * Calls roll(), addRolls(), and displayResults() when <button>Roll</button> is clicked.
    * @return  nothing
    */
   listenForClick() {
     this.id.addEventListener("click", () => {
       this.roll();
       this.addRolls();
+      this.displayResults();
     })
   }
 }
