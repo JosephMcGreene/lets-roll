@@ -19,7 +19,7 @@ h1 {
   font-size: 2.5rem; /* 40px */
   text-align: center;
 
-  text-shadow: 8px 4px 8px rgb(30,30,30);
+  text-shadow: 0 4px 8px rgba(0,0,0, 0.7);
 }
 
 hr {
@@ -32,8 +32,6 @@ hr {
 
 .die {
   margin-bottom: 30px;
-  margin-left: 4vw;
-  margin-right: 4vw;
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -50,43 +48,44 @@ hr {
       font-size: 3rem; /* 36px */
 
       grid-row-start: 2;
-      grid-column-start: 1;
+      grid-column-start: 2;
       grid-column-end: 4;
     }
-  input {
-    max-width: 20vw;
-    padding: 15px;
+  .die input {
+    width: 80px;
+    padding: 12px;
     font-family: 'Cinzel', serif;
     font-size: 2rem; /* 28px */
     text-align: center;
-
-    border-radius: 7px;
 
     grid-row-start: 1;
   }
     input[type=number]::-webkit-inner-spin-button {
       height: 50px;
     }
-  button {
-    padding: 15px;
-    font-family: 'Cinzel', serif;
-    font-size: 1.75rem; /* 28px */
 
-    border-radius: 7px;
-    grid-row-start: 1;
+button {
+  padding: 15px;
+  font-family: 'Cinzel', serif;
+  font-size: 1.75rem; /* 28px */
+
+  grid-column-start: 1;
+  grid-row-start: 2;
+}
+  button:active {
+    box-shadow: 0 0 8px black inset;
+    transform: translateY(4px);
   }
-    button:active {
-      box-shadow: 0 0 8px black inset;
-    }
 
   /* ----- STYLE CLASSES ----- */
 
-.text-shadow {
-  text-shadow: 4px 4px 6px black;
+.text-theme {
+  text-shadow: 0 4px 5px rgba(0,0,0, 0.8);
 }
 
-.box-shadow {
-  box-shadow: 4px 4px 6px rgb(40,40,40);
+.box-theme {
+  box-shadow: 0 4px 5px rgba(40,40,40, 0.8);
+  border-radius: 7px;
 }
 
   /* ----- MEDIA QUERIES ----- */
