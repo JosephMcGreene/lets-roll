@@ -27,11 +27,11 @@ hr {
   max-width: 30vw;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .die {
-  margin-bottom: 30px;
+  margin: 25px 3vw;
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -49,7 +49,7 @@ hr {
 
       grid-row-start: 2;
       grid-column-start: 2;
-      grid-column-end: 4;
+      grid-column-end: 5;
     }
   .die input {
     width: 80px;
@@ -64,7 +64,8 @@ hr {
       height: 50px;
     }
 
-button {
+button[type='button'] {
+  margin-top: 10px;
   padding: 15px;
   font-family: 'Cinzel', serif;
   font-size: 1.75rem; /* 28px */
@@ -74,35 +75,44 @@ button {
 }
   button:active {
     box-shadow: 0 0 8px black inset;
-    transform: translateY(4px);
+    animation: press 65ms;
+  }
+  @keyframes press {
+    0% {
+      transform: translateY(0);
+    }
+    75% {
+      transform: translateY(6px);
+    }
+    100% {
+      transform: translateY(0);
+    }
   }
 
   /* ----- STYLE CLASSES ----- */
 
 .text-theme {
-  text-shadow: 0 4px 5px rgba(0,0,0, 0.8);
+  text-shadow: 0 4px 6px rgba(0,0,0, 0.75);
 }
 
 .box-theme {
-  box-shadow: 0 4px 5px rgba(40,40,40, 0.8);
+  box-shadow: 0 4px 6px rgba(0,0,0, 0.75);
   border-radius: 7px;
 }
 
   /* ----- MEDIA QUERIES ----- */
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 700px) {
 
   .die {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1.75fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-auto-flow: column;
     justify-items: center;
     align-items: center;
-  }
-  span:nth-of-type(even) {
-    grid-row-start: 1;
-    grid-column-start: 4;
-    grid-column-end: 4;
+
+    margin: 45px auto;
+    max-width: 657px;
   }
 
 }
@@ -112,14 +122,6 @@ button {
 
   h1 {
     font-size: 3.5rem;
-  }
-
-  .text-shadow {
-    text-shadow: 4px 4px 10px rgb(40,40,40);
-  }
-  
-  .box-shadow {
-    box-shadow: 8px 4px 6px rgb(40,40,40);
   }
 
 }

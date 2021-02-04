@@ -22,7 +22,7 @@ class Die {
       this.rollResults.push(dieRoll);
     }
 
-    return this.rollResults;
+    return this.rollResults; /* ------------- Array of the results of the di(c)e roll(s) ------------- */
   }
 
   /**
@@ -37,7 +37,7 @@ class Die {
       this.rollTotal += this.rollResults[i];
     }
 
-    return this.rollTotal;
+    return this.rollTotal; /* ------------- Sum total of the results of the di(c)e roll(s) ------------- */
   }
 
   /**
@@ -49,45 +49,57 @@ class Die {
     let parsedModifier;
 
     if (this.modifier.value === NaN || !this.modifier.value) {
-      this.modifier.value = 0;
+      this.modifier.value = 0; // If the user does not input a modifier then the modifier defaults to 0.
     }
     parsedModifier = parseInt(this.modifier.value);
     this.grandTotal = this.rollTotal + parsedModifier;
 
-    return this.grandTotal;
+    return this.grandTotal; /* ------------- grand total of the results of the di(c)e roll(s) + modifier ------------- */
   }
 
     /**
-   * Displays the roll results to the page.
+   * Displays the results of the roll to the page.
    * @return  nothing
    */
   displayResults() {
     if (this.numOfDice.value == 1) {
       if (this.modifier.value == 0) {
-        this.resultsDisplay.innerHTML = `${this.addRolls()}`;
+        this.resultsDisplay.innerHTML = `${this.addRolls()}`; // If there is a single die rolled with no modifier
+        
+        $(this.resultsDisplay).hide()
+                              .fadeIn(200);
       }
       else if (this.modifier.value > 0) {
-        this.resultsDisplay.innerHTML = `${this.addModifier()} <small>(${this.rollTotal}) + ${this.modifier.value}</small>`;
+        this.resultsDisplay.innerHTML = `${this.addModifier()} <small>(${this.rollTotal}) + ${this.modifier.value}</small>`; // If there is a single die rolled with a modifier
+
+        $(this.resultsDisplay).hide()
+                              .fadeIn(200);
       }
     }
     else if (this.modifier.value == 0) {
       const joinedRolls = this.rollResults.join(' + ');
-      this.resultsDisplay.innerHTML = `${this.addRolls()} <small>(${joinedRolls})</small>`;
+      this.resultsDisplay.innerHTML = `${this.addRolls()} <small>(${joinedRolls})</small>`; // If there is more than one die rolled with no modifier
+
+      $(this.resultsDisplay).hide()
+                            .fadeIn(200);
     }
     else if (this.modifier.value > 0) {
       const joinedRolls = this.rollResults.join(' + ');
-      this.resultsDisplay.innerHTML = `${this.addModifier()} <small>(${joinedRolls}) + ${this.modifier.value}</small>`;
+      this.resultsDisplay.innerHTML = `${this.addModifier()} <small>(${joinedRolls}) + ${this.modifier.value}</small>`; // If there is more than one die rolled with a modifier
+
+      $(this.resultsDisplay).hide()
+                            .fadeIn(200);
     }
   }
 
     /**
-   * 
+   * Rolls the di(c)e and adds the rolls + modifier and displays the results of the roll to the page.
    * @return  nothing
    */
   listenForRoll() {
     this.id.addEventListener("click", () => {
       if (!this.numOfDice.value) {
-        ;
+        ; // The user must roll at least 1 die, so they are barred from rolling if they have not entered a value of at least one.
       } 
       else {
         this.roll();
