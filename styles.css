@@ -39,13 +39,12 @@ hr {
   align-items: center;
 }
   span {
-    font-size: 3rem; /* 36px */
+    font-size: 3rem; /* 48px */
     margin: 12px;
 
     grid-row-start: 1;
   }
     span:nth-of-type(even) {
-      font-size: 3rem; /* 36px */
 
       grid-row-start: 2;
       grid-column-start: 2;

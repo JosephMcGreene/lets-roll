@@ -11,33 +11,36 @@ class Die {
   }
 
   /**
-   * Generates a random number or array of numbers representing the result of the di(c)e roll(s).
+   * Generates an array of numbers representing the result(s) of the di(c)e roll(s).
    * @return  [Array]     an array containing the individual results of all of the di(c)e roll(s) performed.
    */
   roll() {
     this.rollResults = [];
 
-    for ( let n = 0; n < this.numOfDice.value; n++ ) {
-      const dieRoll = Math.floor(Math.random() * Math.floor(this.numOfSides) + 1);
-      this.rollResults.push(dieRoll);
-    }
+      if (!this.numOfDice.value) {
+        this.numOfDice.value = 1;  // If the user does not input a number of dice to roll then the number defaults to 1.
+      }
+      for ( let n = 0; n < this.numOfDice.value; n++ ) {
+        const dieRoll = Math.floor(Math.random() * Math.floor(this.numOfSides) + 1);
+        this.rollResults.push(dieRoll);
+      }
 
-    return this.rollResults; /* ------------- Array of the results of the di(c)e roll(s) ------------- */
+    return this.rollResults; /* ------------- Array of the result(s) of the di(c)e roll(s) ------------- */
   }
 
   /**
-   * Adds all of the individual results of roll() together for a grand total.
+   * Adds all of the individual results of roll() together for a total of all of the rolls.
    * @return  number     a total of all of the rolls from roll().
    */
 
   addRolls() {
     this.rollTotal = 0;
 
-    for ( let i = 0; i < this.rollResults.length; i++ ) {
-      this.rollTotal += this.rollResults[i];
-    }
+      for ( let i = 0; i < this.rollResults.length; i++ ) {
+        this.rollTotal += this.rollResults[i];
+      }
 
-    return this.rollTotal; /* ------------- Sum total of the results of the di(c)e roll(s) ------------- */
+    return this.rollTotal; /* ----------- Sum total of the results of the di(c)e roll(s) before a modifier ----------- */
   }
 
   /**
@@ -93,20 +96,15 @@ class Die {
   }
 
     /**
-   * Rolls the di(c)e and adds the rolls + modifier and displays the results of the roll to the page.
+   * Rolls the di(c)e, adds the rolls + modifier and displays the results of the roll to the page.
    * @return  nothing
    */
   listenForRoll() {
     this.id.addEventListener("click", () => {
-      if (!this.numOfDice.value) {
-        ; // The user must roll at least 1 die, so they are barred from rolling if they have not entered a value of at least one.
-      } 
-      else {
         this.roll();
         this.addRolls();
         this.addModifier();
         this.displayResults();
-      }
     })
   }
 
