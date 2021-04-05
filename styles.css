@@ -1,3 +1,11 @@
+
+@font-face {
+    font-family: 'shangrilanfsmallcapsregular';
+    src: url('fonts/SHANLNC_-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,7 +13,8 @@
 }
 
 body {
-  font-family: 'Cinzel', serif;
+  font-family: 'shangrilanfsmallcapsregular', serif;
+  letter-spacing: .17rem;
 
   background-image: url("wood-background.jpg");
   background-color: saddlebrown;
@@ -60,7 +69,7 @@ main {
   .die input {
     width: 5rem;
     padding: 12px;
-    font-family: 'Cinzel', serif;
+    font-family: 'shangrilanfsmallcapsregular', serif;
     font-size: 2rem; /* 28px */
     text-align: center;
 
@@ -81,14 +90,14 @@ button[type='button'] {
 }
   button:active {
     box-shadow: 0 0 8px black inset;
-    animation: press 40ms;
+    animation: press 30ms;
   }
     @keyframes press {
       0% {
         transform: translateY(0);
       }
       100% {
-        transform: translateY(5px);
+        transform: translateY(4px);
       }
     }
 
